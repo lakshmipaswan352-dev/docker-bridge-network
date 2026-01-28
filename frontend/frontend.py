@@ -1,11 +1,13 @@
+import time
 import requests
 
-backend_url = "http://backend-container:5000"
+BACKEND_URL = "http://backend:8000/"
 
-response = requests.get(backend_url)
+while True:
+    try:
+        response = requests.get(BACKEND_URL, timeout=5)
+        print(f"[Frontend] Message from backend: {response.text}")
+    except Exception as e:
+        print(f"[Frontend] Backend not reachable: {e}")
 
-if response.status_code == 200:
-    print("Frontend received the following response from the backend:")
-    print(response.text)
-else:
-    print("Failed to communicate with the backend.")
+    time.sleep(10)
