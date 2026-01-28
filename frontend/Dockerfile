@@ -9,4 +9,4 @@ WORKDIR /app
 COPY frontend.py /app/frontend.py
 
 # Run frontend.py when the container launches
-CMD ["python", "/app/frontend.py", "&"]
+CMD ["python", "/app/frontend.py"]
